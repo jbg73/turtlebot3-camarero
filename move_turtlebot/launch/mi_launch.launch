@@ -1,0 +1,14 @@
+<launch>
+    <!--Nodo Camara-->
+    <node name="vision_program" pkg="practica3" type="vision_program.py" output="screen"/>
+
+    <!--Nodo Mover Turtlebot2-->
+    <!--Argumento de entrada que define el destino, por defeecto 0(home)-->
+    <arg name="dest" default="0"/>
+    <node name="move_turtlebot" pkg="move_turtlebot" type="move_turtlebot.py" args="$(arg dest)" output="screen"/>
+    
+    <!--Nodo que publica continuamente el destino en un topic-->
+    <node name="publishDestiny" pkg="move_turtlebot" type="publishDestiny.py" args="$(arg dest)" output="screen"/>
+
+
+</launch>
